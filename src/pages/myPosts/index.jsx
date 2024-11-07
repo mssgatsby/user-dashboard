@@ -28,7 +28,7 @@ export default function MyPosts() {
       <h1 className="m-5">My Posts Page</h1>
 
       <div className="flex flex-wrap gap-5 mx-auto w-full">
-        {userPosts ? (
+        {userPosts && userPosts.length > 0 ? (
           userPosts.map((post) => (
             <Card className="w-96 mt-10" key={post.id}>
               <CardHeader color="blue-gray" className="relative h-56">
@@ -48,7 +48,9 @@ export default function MyPosts() {
             </Card>
           ))
         ) : (
-          <p>No posts found for this user.</p>
+          <p className="m-5 text-red-500">
+            You haven't created any post yet. Go to the Create Post page.
+          </p>
         )}
       </div>
     </>
