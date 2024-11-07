@@ -41,8 +41,16 @@ export default function Register() {
         <Input
           type="text"
           label="Name"
-          {...register("name", { required: true, maxLength: 100 })}
+          {...register("name", {
+            required: {
+              value: true,
+              message: "Required field",
+            },
+          })}
         />
+        {errors.name && (
+          <p className="text-red-500 text-sm mt-1">{errors?.name?.message}</p>
+        )}
         <Input
           type="text"
           label="Username"
@@ -51,7 +59,6 @@ export default function Register() {
               value: true,
               message: "Required field",
             },
-            maxLength: 80,
           })}
         />
         {errors.username && (
@@ -64,7 +71,7 @@ export default function Register() {
             type="password"
             label="Password"
             {...register("password", {
-              required: true,
+              required: { value: true, message: "Required field" },
               minLength: {
                 value: 4,
                 message: "Password must be at least 4 characters",

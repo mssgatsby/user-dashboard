@@ -34,7 +34,7 @@ export default function Login() {
     } else {
       setUsername("");
       setPassword("");
-      toast.error("Wrong data!");
+      toast.error("Wrong credentials!");
     }
   };
 

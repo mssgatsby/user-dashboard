@@ -18,7 +18,7 @@ export default function App() {
     <>
       <ToastContainer
         position="top-center"
-        autoClose={5000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -35,7 +35,15 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/create" element={<CreatePost />} />
+        <Route
+          path="/create"
+          element={
+            <ProtectedRoute>
+              {" "}
+              <CreatePost />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/myposts"
           element={
