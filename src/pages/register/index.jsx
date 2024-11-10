@@ -4,6 +4,7 @@ import { useMutation, useQuery } from "react-query";
 import { api } from "../../utils/axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useProfImg } from "../../utils/zustand";
 
 export default function Register() {
   const {
@@ -11,6 +12,8 @@ export default function Register() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const { image } = useProfImg();
 
   const submitData = (data) => {
     return api.post("/users", data);
@@ -21,8 +24,8 @@ export default function Register() {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data);
-    mutation.mutate(data, {
+    const fullData = { ...data, image: image };
+    mutation.mutate(fullData, {
       onSuccess: () => {
         toast.success("Registered");
         navigate("/login");

@@ -12,6 +12,7 @@ import AllPosts from "./pages/allPosts";
 import SinglePost from "./pages/singlePost";
 import EditPost from "./pages/editPost";
 import ProtectedRoute from "./utils/protectedRoute";
+import EditProfile from "./pages/editProfile";
 
 export default function App() {
   return (
@@ -39,7 +40,6 @@ export default function App() {
           path="/create"
           element={
             <ProtectedRoute>
-              {" "}
               <CreatePost />
             </ProtectedRoute>
           }
@@ -62,6 +62,14 @@ export default function App() {
           }
         />
         <Route path="/singlepost/:id" element={<SinglePost />} />
+        <Route
+          path="/editprofile/:id"
+          element={
+            <ProtectedRoute>
+              <EditProfile />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   );

@@ -67,19 +67,16 @@ export default function EditPost() {
         <Input
           type="text"
           label="Title"
-          //   defaultValue={post.title}
           {...register("title", { required: true, maxLength: 100 })}
         />
         <Input
           type="text"
           label="Image"
-          //   defaultValue={post.image}
           {...register("image", { required: true })}
         />
         <Textarea
           variant="outlined"
           label="Body"
-          //   defaultValue={post.body}
           {...register("body", { required: true })}
         />
         <Button type="submit" disabled={mutation.isLoading}>

@@ -29,7 +29,7 @@ export default function AllPosts() {
     <>
       <h1 className="m-5">My Posts Page</h1>
 
-      <div className="flex flex-wrap gap-5">
+      <div className="flex flex-wrap gap-5 m-5">
         {posts ? (
           posts.map((post) => {
             const author = users?.find((user) => post.userId == user.id);
@@ -44,7 +44,9 @@ export default function AllPosts() {
                   <Typography variant="h5" color="blue-gray" className="mb-2">
                     {post.title}
                   </Typography>
-                  <Typography>{post.body}</Typography>
+                  <Typography>
+                    {post.body.split(" ").slice(0, 10).join(" ")} ...
+                  </Typography>
                 </CardBody>
                 <div className="mx-6 flex justify-between items-center">
                   <p>{author ? author.name : "Unknown"}</p>
